@@ -93,9 +93,9 @@ storage:
     - path: /opt/file2
       filesystem: root
       contents:
+        compression: gzip
         remote:
           url: http://example.com/file2
-          compression: gzip
           verification:
             hash:
               function: sha512

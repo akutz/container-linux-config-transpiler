@@ -295,9 +295,9 @@ storage:
     - path: /opt/file2
       filesystem: filesystem1
       contents:
+        compression: gzip
         remote:
           url: http://example.com/file2
-          compression: gzip
           verification:
             hash:
               function: sha512
@@ -311,9 +311,9 @@ storage:
     - path: /opt/file3
       filesystem: filesystem2
       contents:
+        compression: gzip
         remote:
           url: http://example.com/file3
-          compression: gzip
       mode: 0400
       user:
         id: 1000
@@ -503,9 +503,9 @@ storage:
 							User:       &types.FileUser{Id: util.IntToPtr(502)},
 							Group:      &types.FileGroup{Id: util.IntToPtr(503)},
 							Contents: types.FileContents{
+								Compression: "gzip",
 								Remote: types.Remote{
-									Url:         "http://example.com/file2",
-									Compression: "gzip",
+									Url: "http://example.com/file2",
 									Verification: types.Verification{
 										Hash: types.Hash{
 											Function: "sha512",
@@ -523,9 +523,9 @@ storage:
 							User:       &types.FileUser{Id: util.IntToPtr(1000)},
 							Group:      &types.FileGroup{Id: util.IntToPtr(1001)},
 							Contents: types.FileContents{
+								Compression: "gzip",
 								Remote: types.Remote{
-									Url:         "http://example.com/file3",
-									Compression: "gzip",
+									Url: "http://example.com/file3",
 								},
 							},
 							Mode:   util.IntToPtr(0400),
@@ -1197,9 +1197,9 @@ func TestConvert(t *testing.T) {
 							User:       &types.FileUser{Id: util.IntToPtr(502)},
 							Group:      &types.FileGroup{Id: util.IntToPtr(503)},
 							Contents: types.FileContents{
+								Compression: "gzip",
 								Remote: types.Remote{
-									Url:         "http://example.com/file2",
-									Compression: "gzip",
+									Url: "http://example.com/file2",
 									Verification: types.Verification{
 										Hash: types.Hash{
 											Function: "sha512",
@@ -1217,9 +1217,9 @@ func TestConvert(t *testing.T) {
 							User:       &types.FileUser{Id: util.IntToPtr(1000)},
 							Group:      &types.FileGroup{Id: util.IntToPtr(1001)},
 							Contents: types.FileContents{
+								Compression: "gzip",
 								Remote: types.Remote{
-									Url:         "http://example.com/file3",
-									Compression: "gzip",
+									Url: "http://example.com/file3",
 								},
 							},
 							Mode:   util.IntToPtr(0400),
@@ -1424,12 +1424,12 @@ func TestConvert(t *testing.T) {
 								},
 								FileEmbedded1: ignTypes.FileEmbedded1{
 									Contents: ignTypes.FileContents{
+										Compression: "gzip",
 										Source: (&url.URL{
 											Scheme: "http",
 											Host:   "example.com",
 											Path:   "/file2",
 										}).String(),
-										Compression: "gzip",
 										Verification: ignTypes.Verification{
 											Hash: util.StringToPtr("sha512-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
 										},
@@ -1930,9 +1930,9 @@ storage:
     - path: /opt/file2
       filesystem: root
       contents:
+        compression: gzip
         remote:
           url: httpz://example.com/file2
-          compression: gzip
           verification:
             hash:
               function: sha512
@@ -1955,7 +1955,7 @@ storage:
 					{
 						Message: "invalid url scheme",
 						Kind:    report.EntryError,
-						Line:    17,
+						Line:    18,
 						Column:  16,
 					},
 				}},
@@ -2017,9 +2017,9 @@ storage:
     - path: /opt/file2
       filesystem: root
       contents:
+        compression: gzip
         remote:
           url: http://example.com/file2
-          compression: gzip
           verification:
             hash:
               function: sha512
@@ -2060,12 +2060,12 @@ storage:
 							},
 							FileEmbedded1: ignTypes.FileEmbedded1{
 								Contents: ignTypes.FileContents{
+									Compression: "gzip",
 									Source: (&url.URL{
 										Scheme: "http",
 										Host:   "example.com",
 										Path:   "/file2",
 									}).String(),
-									Compression: "gzip",
 									Verification: ignTypes.Verification{
 										Hash: util.StringToPtr("sha512-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
 									},

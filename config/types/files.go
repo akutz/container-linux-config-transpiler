@@ -63,14 +63,14 @@ type File struct {
 }
 
 type FileContents struct {
-	Remote Remote `yaml:"remote"`
-	Inline string `yaml:"inline"`
-	Local  string `yaml:"local"`
+	Compression string `yaml:"compression"`
+	Remote      Remote `yaml:"remote"`
+	Inline      string `yaml:"inline"`
+	Local       string `yaml:"local"`
 }
 
 type Remote struct {
 	Url          string       `yaml:"url"`
-	Compression  string       `yaml:"compression"`
 	Verification Verification `yaml:"verification"`
 }
 
@@ -237,7 +237,7 @@ func init() {
 				}
 			}
 
-			newFile.Contents.Compression = file.Contents.Remote.Compression
+			newFile.Contents.Compression = file.Contents.Compression
 			newFile.Contents.Verification = convertVerification(file.Contents.Remote.Verification)
 
 			out.Storage.Files = append(out.Storage.Files, newFile)
